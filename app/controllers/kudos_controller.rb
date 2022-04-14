@@ -1,6 +1,5 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: [:show, :edit, :update, :destroy]
-
   # GET /kudos
   def index
     @kudos = Kudo.all
@@ -22,9 +21,9 @@ class KudosController < ApplicationController
   # POST /kudos
   def create
     @kudo = Kudo.new(kudo_params)
-
+    @kudo.giver_id = current_employee.id
     if @kudo.save
-      redirect_to @kudo, notice: 'Kudo was successfully created.'
+      redirect_to profile_path(@kudo.giver_id), notice: 'Kudo was successfully created.'
     else
       render :new
     end
