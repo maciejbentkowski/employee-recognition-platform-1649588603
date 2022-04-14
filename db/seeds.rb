@@ -10,5 +10,10 @@
 
 5.times do |e|
 employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password#{e+1}")
+
 puts employee.email
+end
+rand(1..20).times do |k|
+Kudo.create!(title: "sample title number #{k}", content: "sample content number #{k}", giver_id: rand(1..5), receiver_id: rand(1..5))
+
 end
