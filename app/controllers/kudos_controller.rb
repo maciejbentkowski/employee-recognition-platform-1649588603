@@ -1,5 +1,6 @@
 class KudosController < ApplicationController
   before_action :set_kudo, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
   # GET /kudos
   def index
     @kudos = Kudo.all
