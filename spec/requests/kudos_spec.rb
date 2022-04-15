@@ -13,7 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/kudos", type: :request do
-  
+
   # Kudo. As you add validations to Kudo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
