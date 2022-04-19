@@ -1,10 +1,11 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe "Create Employee", :type => :system do
+RSpec.describe 'Create Employee', :type => :system do
   before do
-        driven_by(:rack_test)
+    driven_by(:rack_test)
   end
-  it "signs employee up" do
+
+  it 'signs employee up' do
     employee = build(:employee)
     visit '/employees/sign_up'
     fill_in 'Email', with: employee.email
@@ -13,7 +14,8 @@ RSpec.describe "Create Employee", :type => :system do
     click_button 'commit'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
   end
-  it "signs employee in" do
+
+  it 'signs employee in' do
     employee = create(:employee)
     visit '/employees/sign_in'
     fill_in 'Email', with: employee.email

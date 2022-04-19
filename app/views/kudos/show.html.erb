@@ -21,4 +21,5 @@
 </p>
 
 <%= link_to 'Edit', edit_kudo_path(@kudo) %> |
+<%= link_to 'Destroy', @kudo, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', kudos_path %>
