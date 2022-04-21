@@ -12,6 +12,10 @@ rails server
 
 ### You can use one of available accounts or make your own
 ```
+VISIT OUR HEROKU APP
+
+https://employee-recognition-nerds.herokuapp.com/home
+
      email                       password
 
 
