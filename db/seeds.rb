@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
+admin = Admin.create!(email:"admin1@sample.com", password: "password1")
+puts "Admin created! #{admin.email} #{admin.password}"
 5.times do |e|
 employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password#{e+1}")
 
