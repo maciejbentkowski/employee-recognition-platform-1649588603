@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   scope :admins do
   get '/pages', to: 'admins/pages#dashboard', as:'dashboard'
   end
+  namespace :admins do
+    resources :kudos
+  end
+
+
   resources :kudos
 
   root to: "kudos#index"
