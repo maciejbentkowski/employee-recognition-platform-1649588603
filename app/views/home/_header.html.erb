@@ -1,10 +1,17 @@
 <div class = "header">
     <div class= "logo"><%=link_to "Employee App",root_path %></div>
     <div class= "menu">
-    <% if employee_signed_in? %>
+    <% if employee_signed_in?%>
+    <nav>Hello <%=current_employee.email%></nav>>
     <nav><%=link_to "Sign Out",destroy_employee_session_path, :method => :delete %></nav>
     <nav><%=link_to "My kudos",profile_path(current_employee.id) %></nav>
+    <% elsif admin_signed_in?%>
+    <nav>Hello <%=current_admin.email%></nav>
+    <nav><%=link_to "Kudos", admins_kudos_path %></nav>
+    <nav><%=link_to "Dashboard",dashboard_path%></nav>
+    <nav><%=link_to "Sign Out",destroy_admin_session_path, :method => :delete %></nav>
     <% else %>
+    <nav><%=link_to "Sign In as Admin",new_admin_session_path %></nav> |
     <nav><%=link_to "Sign In",new_employee_session_path %></nav>
     <nav><%=link_to "Sign Up",new_employee_registration_path %></nav>
     <% end %>
