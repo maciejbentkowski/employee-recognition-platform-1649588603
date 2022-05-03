@@ -23,6 +23,7 @@ class KudosController < ApplicationController
   def create
     @kudo = Kudo.new(kudo_params)
     @kudo.giver_id = current_employee.id
+
     if @kudo.save
       redirect_to profile_path(@kudo.giver_id), notice: 'Kudo was successfully created.'
     else
