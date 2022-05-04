@@ -40,7 +40,7 @@ RSpec.describe 'Admin', :type => :system do
       expect(page).to have_content kudo2.content
       expect(page).to have_content kudo3.title
       expect(page).to have_content kudo3.content
-      expect { (click_on "Destroy", match: :first) }.to change(Kudo, :count).by(-1)
+      expect { (click_on 'Destroy', match: :first) }.to change(Kudo, :count).by(-1)
     end
 
     def admin_sign_in_and_expect_succesfully
