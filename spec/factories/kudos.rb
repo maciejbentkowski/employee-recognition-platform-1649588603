@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :kudo do
-    sequence(:title) { |i| "Sample kudo title nr #{i}" }
-    sequence(:content) { |i| "Sample kudo content nr #{i}" }
+    title { 'Sample kudo title' }
+    content { 'Sample kudo content' }
     giver_id { 1 }
-    receiver_id { 2 }
+    receiver_id { 3 }
   end
 end
