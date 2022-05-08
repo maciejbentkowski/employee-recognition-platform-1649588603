@@ -19,7 +19,7 @@ class Admins::EmployeesController < ApplicationController
       end
     end
 
-    def destro
+    def destroy
         @kudos = Kudo.where(['giver_id = ? or receiver_id = ?', @employee.id, @employee.id]).all
         @kudos.each(&:destroy)
         @employee.destroy
