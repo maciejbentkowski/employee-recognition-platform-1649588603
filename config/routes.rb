@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index', as: 'home'
   scope :admins do
   get '/pages', to: 'admins/pages#dashboard', as:'dashboard'
+  get '/employees', to: 'admins/employees#index', as:'employees'
   end
   namespace :admins do
     resources :kudos
+    resources :employees
   end
 
 
