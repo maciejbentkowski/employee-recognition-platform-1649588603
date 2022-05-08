@@ -42,7 +42,34 @@ RSpec.describe 'Admin', :type => :system do
       expect(page).to have_content kudo3.content
       expect { (click_on 'Destroy', match: :first) }.to change(Kudo, :count).by(-1)
     end
+    it 'listing employees' do
+      admin_sign_in_and_expect_succesfully
+      visit '/admins/employees'
+      expect(page).to have_content employee1.email
+      expect(page).to have_content employee1.number_of_available_kudos
+      expect(page).to have_content employee2.email
+      expect(page).to have_content employee2.number_of_available_kudos
+      expect(page).to have_content employee3.email
+      expect(page).to have_content employee3.number_of_available_kudos
+    end
 
+    it 'allow to update employee' do
+      admin_sign_in_and_expect_succesfully
+      visit '/admins/employees'
+      click_on 'Edit', match: :first
+      expect(page).to have_content "Editing Employee"
+      fill_in 'Email', with: 'changedEmployee1@sample.com'
+      fill_in 'Number of available kudos', with: '25'
+      fill_in 'Password', with: 'sample123'
+      click_button 'commit'
+      expect(page).to have_content 'Employee was successfully updated'
+    end
+
+    it 'allow to destroy employee' do
+      admin_sign_in_and_expect_succesfully
+      visit '/admins/employees'
+      expect { (click_on 'Destroy', match: :first) }.to change(Employee, :count).by(-1)
+    end
     def admin_sign_in_and_expect_succesfully
       visit '/admins'
       fill_in 'Email', with: admin.email

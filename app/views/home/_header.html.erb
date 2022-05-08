@@ -8,6 +8,7 @@
     <nav><%=link_to "My kudos",profile_path(current_employee.id) %></nav>
     <% elsif admin_signed_in?%>
     <nav>Hello <%=current_admin.email%></nav>
+    <nav><%=link_to "Employees", employees_path %></nav>
     <nav><%=link_to "Kudos", admins_kudos_path %></nav>
     <nav><%=link_to "Dashboard",dashboard_path%></nav>
     <nav><%=link_to "Sign Out",destroy_admin_session_path, :method => :delete %></nav>

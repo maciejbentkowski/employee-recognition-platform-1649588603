@@ -8,14 +8,13 @@
 
 admin = Admin.create!(email:"admin1@sample.com", password: "password1")
 puts "Admin created! #{admin.email} #{admin.password}"
-
-employees = Array.new
-
 5.times do |e|
-employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password")
-employees[e] = employee
+employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password#{e+1}")
+
 puts employee.email
 end
+rand(1..20).times do |k|
+Kudo.create!(title: "sample title number #{k}", content: "sample content number #{k}", giver_id: rand(1..5), receiver_id: rand(1..5))
 
 employees.each do |e|
     rand(1..9).times do |k|
