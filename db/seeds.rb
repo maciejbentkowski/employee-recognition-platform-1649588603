@@ -23,3 +23,8 @@ Kudo.create!(title: "sample title number 7", content: "sample content number 7",
 Kudo.create!(title: "sample title number 8", content: "sample content number 8", giver_id: 4, receiver_id: 2)
 Kudo.create!(title: "sample title number 9", content: "sample content number 9", giver_id: 5, receiver_id: 1)
 Kudo.create!(title: "sample title number 10", content: "sample content number 10", giver_id: 5, receiver_id: 1)
+
+CompanyValue.create!(title:"Honesty")
+CompanyValue.create!(title:"Ownership")
+CompanyValue.create!(title:"Accountability")
+CompanyValue.create!(title:"Passion")
