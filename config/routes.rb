@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get '/employees', to: 'admins/employees#index', as:'employees'
   end
   namespace :admins do
-    resources :kudos
-    resources :employees
+    resources :kudos, :employees, :company_values
   end
 
 
