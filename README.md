@@ -15,6 +15,9 @@ rails server
 VISIT OUR HEROKU APP
 
 https://employee-recognition-nerds.herokuapp.com/home
+     admin's email            admin's password
+
+admin1@sample.com                password1
 
      email                       password
 
