@@ -1,14 +1,18 @@
-class Admins::EmployeesController < ApplicationController
-    before_action :set_employee, only: [:show, :edit, :update, :destroy]
+module Admins
+  class EmployeesController < ApplicationController
+    before_action :set_employee, only: %i[show edit update destroy]
     before_action :require_admin_login
     def index
-        @employees = Employee.all
+      @employees = Employee.all
     end
+
+    def show; end
+
     def new
-        @employee = Employee.new
+      @employee = Employee.new
     end
-    def edit
-    end
+
+    def edit; end
 
     def update
       check_if_password_param_is_blank
@@ -20,13 +24,14 @@ class Admins::EmployeesController < ApplicationController
     end
 
     def destroy
-        @kudos = Kudo.where(['giver_id = ? or receiver_id = ?', @employee.id, @employee.id]).all
-        @kudos.each(&:destroy)
-        @employee.destroy
-        redirect_to admins_employees_url, notice: 'Employee was successfully destroyed.'
+      @kudos = Kudo.where(['giver_id = ? or receiver_id = ?', @employee.id, @employee.id]).all
+      @kudos.each(&:destroy)
+      @employee.destroy
+      redirect_to admins_employees_url, notice: 'Employee was successfully destroyed.'
     end
 
     private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
@@ -34,13 +39,11 @@ class Admins::EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.require(:employee).permit(:email, :number_of_available_kudos,:password)
+      params.require(:employee).permit(:email, :number_of_available_kudos, :password)
     end
+
     def check_if_password_param_is_blank
-      if params[:employee][:password].blank?
-        params[:employee].delete(:password)
-      end
+      params[:employee].delete(:password) if params[:employee][:password].blank?
     end
-
-
+  end
 end
