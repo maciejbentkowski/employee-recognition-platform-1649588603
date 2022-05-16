@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Company Value', :type => :system do
+RSpec.describe 'Company Value', type: :system do
   before do
     driven_by(:rack_test)
   end
@@ -36,14 +36,13 @@ RSpec.describe 'Company Value', :type => :system do
     click_button 'commit'
     expect(page).to have_content 'Company value was successfully updated'
   end
+
   it 'destroy company value' do
     admin_sign_in_and_expect_succesfully
 
     visit '/admins/company_values'
     expect { (click_on 'Destroy', match: :first) }.to change(CompanyValue, :count).by(-1)
   end
-
-
 
   def admin_sign_in_and_expect_succesfully
     visit '/admins'
