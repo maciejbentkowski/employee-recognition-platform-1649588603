@@ -24,20 +24,16 @@ module Admins
     end
 
     def destroy
-      @kudos = Kudo.where(['giver_id = ? or receiver_id = ?', @employee.id, @employee.id]).all
-      @kudos.each(&:destroy)
       @employee.destroy
       redirect_to admins_employees_url, notice: 'Employee was successfully destroyed.'
     end
 
     private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def employee_params
       params.require(:employee).permit(:email, :number_of_available_kudos, :password)
     end
