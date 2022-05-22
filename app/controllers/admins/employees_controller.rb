@@ -1,20 +1,24 @@
 module Admins
   class EmployeesController < ApplicationController
-    before_action :set_employee, only: %i[show edit update destroy]
     before_action :require_admin_login
     def index
       @employees = Employee.all
     end
 
-    def show; end
+    def show
+      employee_find
+    end
 
     def new
       @employee = Employee.new
     end
 
-    def edit; end
+    def edit
+      employee_find
+    end
 
     def update
+      employee_find
       check_if_password_param_is_blank
       if @employee.update(employee_params)
         redirect_to employees_path, notice: 'Employee was successfully updated'
@@ -24,13 +28,14 @@ module Admins
     end
 
     def destroy
+      employee_find
       @employee.destroy
       redirect_to admins_employees_url, notice: 'Employee was successfully destroyed.'
     end
 
     private
 
-    def set_employee
+    def employee_find
       @employee = Employee.find(params[:id])
     end
 

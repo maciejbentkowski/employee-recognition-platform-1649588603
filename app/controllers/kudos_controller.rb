@@ -1,18 +1,21 @@
 class KudosController < ApplicationController
-  before_action :set_kudo, only: %i[show edit update destroy]
   before_action :require_login
 
   def index
     @kudos = Kudo.all
   end
 
-  def show; end
+  def show
+    kudo_find
+  end
 
   def new
     @kudo = Kudo.new
   end
 
-  def edit; end
+  def edit
+    kudo_find
+  end
 
   def create
     @kudo = Kudo.new(kudo_params)
@@ -26,6 +29,7 @@ class KudosController < ApplicationController
   end
 
   def update
+    kudo_find
     if @kudo.update(kudo_params)
       redirect_to @kudo, notice: 'Kudo was successfully updated.'
     else
@@ -34,13 +38,14 @@ class KudosController < ApplicationController
   end
 
   def destroy
+    kudo_find
     @kudo.destroy
     redirect_to kudos_url, notice: 'Kudo was successfully destroyed.'
   end
 
   private
 
-  def set_kudo
+  def kudo_find
     @kudo = Kudo.find(params[:id])
   end
 
