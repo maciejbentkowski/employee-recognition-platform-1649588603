@@ -9,7 +9,7 @@ RSpec.describe 'Kudos', type: :system do
   let(:employee2) { create(:employee) }
   let(:employee3) { create(:employee) }
   let!(:kudo1) { create(:kudo, giver_id: employee1.id, receiver_id: employee2.id) }
-  let!(:company_value2) {create(:company_value, title: 'second company value')}
+  let!(:company_value2) { create(:company_value, title: 'second company value') }
 
   it 'Creating kudo' do
     employee_sign_in_and_expect_succesfully

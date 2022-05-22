@@ -33,7 +33,6 @@ RSpec.describe 'Admin', type: :system do
     expect(page).to have_content kudo2.title
     expect(page).to have_content kudo2.content
     expect(page).to have_content kudo2.company_value.title
-
   end
 
   it 'deleting Kudos' do
