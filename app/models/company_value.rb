@@ -1,4 +1,4 @@
 class CompanyValue < ApplicationRecord
-  belongs_to :kudo
+  has_many :kudos, dependent: :destroy
   validates :title, presence: true, uniqueness: true
 end

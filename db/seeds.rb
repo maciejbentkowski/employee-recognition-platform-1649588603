@@ -13,18 +13,20 @@ puts "Admin created! #{admin.email} #{admin.password}"
     puts employee.email
 end
 
-Kudo.create!(title: "sample title number 1", content: "sample content number 1", giver_id: 1, receiver_id: 5)
-Kudo.create!(title: "sample title number 2", content: "sample content number 2", giver_id: 1, receiver_id: 5)
-Kudo.create!(title: "sample title number 3", content: "sample content number 3", giver_id: 2, receiver_id: 4)
-Kudo.create!(title: "sample title number 4", content: "sample content number 4", giver_id: 2, receiver_id: 4)
-Kudo.create!(title: "sample title number 5", content: "sample content number 5", giver_id: 3, receiver_id: 4)
-Kudo.create!(title: "sample title number 6", content: "sample content number 6", giver_id: 3, receiver_id: 4)
-Kudo.create!(title: "sample title number 7", content: "sample content number 7", giver_id: 4, receiver_id: 3)
-Kudo.create!(title: "sample title number 8", content: "sample content number 8", giver_id: 4, receiver_id: 3)
-Kudo.create!(title: "sample title number 9", content: "sample content number 9", giver_id: 5, receiver_id: 1)
-Kudo.create!(title: "sample title number 10", content: "sample content number 10", giver_id: 5, receiver_id: 1)
+company_value1 = CompanyValue.create!(title:"Honesty")
+company_value2 = CompanyValue.create!(title:"Ownership")
+company_value3 = CompanyValue.create!(title:"Accountability")
+company_value4 = CompanyValue.create!(title:"Passion")
 
-CompanyValue.create!(title:"Honesty")
-CompanyValue.create!(title:"Ownership")
-CompanyValue.create!(title:"Accountability")
-CompanyValue.create!(title:"Passion")
+Kudo.create!(title: "sample title number 1", content: "sample content number 1", giver_id: 1, receiver_id: 5, company_value: company_value1)
+Kudo.create!(title: "sample title number 2", content: "sample content number 2", giver_id: 1, receiver_id: 5, company_value: company_value2)
+Kudo.create!(title: "sample title number 3", content: "sample content number 3", giver_id: 2, receiver_id: 4, company_value: company_value3)
+Kudo.create!(title: "sample title number 4", content: "sample content number 4", giver_id: 2, receiver_id: 4, company_value: company_value4)
+Kudo.create!(title: "sample title number 5", content: "sample content number 5", giver_id: 3, receiver_id: 4, company_value: company_value1)
+Kudo.create!(title: "sample title number 6", content: "sample content number 6", giver_id: 3, receiver_id: 4, company_value: company_value2)
+Kudo.create!(title: "sample title number 7", content: "sample content number 7", giver_id: 4, receiver_id: 3, company_value: company_value3)
+Kudo.create!(title: "sample title number 8", content: "sample content number 8", giver_id: 4, receiver_id: 3, company_value: company_value4)
+Kudo.create!(title: "sample title number 9", content: "sample content number 9", giver_id: 5, receiver_id: 1, company_value: company_value1)
+Kudo.create!(title: "sample title number 10", content: "sample content number 10", giver_id: 5, receiver_id: 1, company_value: company_value2)
+
+
