@@ -15,7 +15,7 @@ RSpec.describe 'Admin', type: :system do
     admin_sign_in_and_expect_succesfully
   end
 
-  it 'listing employees' do
+  it 'lists employees' do
     admin_sign_in_and_expect_succesfully
 
     visit '/admins/employees'

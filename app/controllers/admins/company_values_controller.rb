@@ -1,6 +1,5 @@
 module Admins
   class CompanyValuesController < ApplicationController
-    before_action :set_company_values, only: %i[show edit update destroy]
     before_action :require_admin_login
     def index
       @company_values = CompanyValue.all
@@ -21,9 +20,12 @@ module Admins
       end
     end
 
-    def edit; end
+    def edit
+      company_value_find
+    end
 
     def update
+      company_value_find
       if @company_value.update(company_values_params)
         redirect_to admins_company_values_path, notice: 'Company value was successfully updated'
       else
@@ -32,13 +34,14 @@ module Admins
     end
 
     def destroy
+      company_value_find
       @company_value.destroy
       redirect_to admins_company_values_path, notice: 'Company value was successfully destroyed.'
     end
 
     private
 
-    def set_company_values
+    def company_value_find
       @company_value = CompanyValue.find(params[:id])
     end
 

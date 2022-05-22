@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Company Value', type: :system do
+RSpec.describe 'Admin Company Values CRUD', type: :system do
   before do
     driven_by(:rack_test)
   end
@@ -24,7 +24,7 @@ RSpec.describe 'Company Value', type: :system do
 
     visit '/admins/company_values/new'
     fill_in 'Title', with: 'sample title'
-    click_button 'commit'
+    expect { click_on 'commit' }.to change(CompanyValue, :count).by(1)
     expect(page).to have_content 'Company value was successfully created'
   end
 
