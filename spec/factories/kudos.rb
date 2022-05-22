@@ -4,5 +4,6 @@ FactoryBot.define do
     sequence(:content) { |i| "Kudo content nr #{i}" }
     giver_id { 1 }
     receiver_id { 2 }
+    company_value
   end
 end

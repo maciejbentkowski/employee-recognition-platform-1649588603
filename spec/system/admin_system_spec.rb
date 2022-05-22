@@ -23,14 +23,17 @@ RSpec.describe 'Admin', type: :system do
     expect(page).to have_content employee2.email
   end
 
-  it 'listing all kudos' do
+  it 'lists all kudos' do
     admin_sign_in_and_expect_succesfully
 
     visit '/admins/kudos'
     expect(page).to have_content kudo1.title
     expect(page).to have_content kudo1.content
+    expect(page).to have_content kudo1.company_value.title
     expect(page).to have_content kudo2.title
     expect(page).to have_content kudo2.content
+    expect(page).to have_content kudo2.company_value.title
+
   end
 
   it 'deleting Kudos' do
