@@ -9,17 +9,22 @@
 admin = Admin.create!(email:"admin1@sample.com", password: "password1")
 puts "Admin created! #{admin.email} #{admin.password}"
 5.times do |e|
-employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password#{e+1}")
+    employee = Employee.create!(email:"employee#{e+1}@sample.com", password:"password#{e+1}")
+    puts employee.email
+end
 
-puts employee.email
-end
-rand(1..20).times do |k|
-Kudo.create!(title: "sample title number #{k}", content: "sample content number #{k}", giver_id: rand(1..5), receiver_id: rand(1..5))
+Kudo.create!(title: "sample title number 1", content: "sample content number 1", giver_id: 1, receiver_id: 5)
+Kudo.create!(title: "sample title number 2", content: "sample content number 2", giver_id: 1, receiver_id: 5)
+Kudo.create!(title: "sample title number 3", content: "sample content number 3", giver_id: 2, receiver_id: 4)
+Kudo.create!(title: "sample title number 4", content: "sample content number 4", giver_id: 2, receiver_id: 4)
+Kudo.create!(title: "sample title number 5", content: "sample content number 5", giver_id: 3, receiver_id: 4)
+Kudo.create!(title: "sample title number 6", content: "sample content number 6", giver_id: 3, receiver_id: 4)
+Kudo.create!(title: "sample title number 7", content: "sample content number 7", giver_id: 4, receiver_id: 3)
+Kudo.create!(title: "sample title number 8", content: "sample content number 8", giver_id: 4, receiver_id: 3)
+Kudo.create!(title: "sample title number 9", content: "sample content number 9", giver_id: 5, receiver_id: 1)
+Kudo.create!(title: "sample title number 10", content: "sample content number 10", giver_id: 5, receiver_id: 1)
 
-employees.each do |e|
-    rand(1..9).times do |k|
-        random = rand(1..5)
-        next if e == random
-            Kudo.create!(title: "sample title number #{k}", content: "sample content number #{k}", giver_id: e.id, receiver_id: random)
-end
-end
+CompanyValue.create!(title:"Honesty")
+CompanyValue.create!(title:"Ownership")
+CompanyValue.create!(title:"Accountability")
+CompanyValue.create!(title:"Passion")
