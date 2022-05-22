@@ -46,6 +46,7 @@ RSpec.describe 'Admin', type: :system do
 
   it 'allow to update employee' do
     admin_sign_in_and_expect_succesfully
+
     visit '/admins/employees'
     click_on 'Edit', match: :first
     expect(page).to have_content 'Editing Employee'
@@ -58,6 +59,7 @@ RSpec.describe 'Admin', type: :system do
 
   it 'allow to destroy employee' do
     admin_sign_in_and_expect_succesfully
+
     visit '/admins/employees'
     expect { (click_on 'Destroy', match: :first) }.to change(Employee, :count).by(-1)
   end
