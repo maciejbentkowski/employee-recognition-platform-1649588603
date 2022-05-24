@@ -1,6 +1,7 @@
 class Kudo < ApplicationRecord
   belongs_to :giver, class_name: 'Employee'
   belongs_to :receiver, class_name: 'Employee'
+  belongs_to :company_value
   after_destroy :increashing_available_kudos
   after_save :decrashing_available_kudos
   validates :title, presence: true

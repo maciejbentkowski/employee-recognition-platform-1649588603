@@ -9,6 +9,7 @@ RSpec.describe 'Kudos', type: :system do
   let(:employee2) { create(:employee) }
   let(:employee3) { create(:employee) }
   let!(:kudo1) { create(:kudo, giver_id: employee1.id, receiver_id: employee2.id) }
+  let!(:company_value2) { create(:company_value, title: 'second company value') }
 
   it 'Creating kudo' do
     employee_sign_in_and_expect_succesfully
@@ -27,8 +28,12 @@ RSpec.describe 'Kudos', type: :system do
     fill_in 'Title', with: 'Changed title'
     fill_in 'Content', with: 'Changed content'
     select employee2.email, from: 'Receiver'
+    select company_value2.title, from: 'Company value'
     click_button 'commit'
     expect(page).to have_content 'Kudo was successfully updated.'
+    expect(page).to have_content 'Changed title'
+    expect(page).to have_content 'Changed content'
+    expect(page).to have_content company_value2.title
   end
 
   it 'Deleting kudo' do

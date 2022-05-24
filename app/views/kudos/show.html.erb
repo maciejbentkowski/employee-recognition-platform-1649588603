@@ -19,6 +19,11 @@
   <strong>Receiver:</strong>
   <%= @kudo.receiver.email %>
 </p>
+
+<p>
+  <strong>CompanyValue:</strong>
+  <%= @kudo.company_value.title %>
+</p>
 <% if current_employee.id == @kudo.giver.id %>
 <%= link_to 'Edit', edit_kudo_path(@kudo) %> |
 <%= link_to 'Destroy', @kudo, method: :delete, data: { confirm: 'Are you sure?' } %> |
