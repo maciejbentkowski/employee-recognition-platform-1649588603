@@ -2,13 +2,42 @@ module Admins
   class RewardsController < ApplicationController
     before_action :require_admin_login
 
-    def index; end
+    def index
+      @rewards = Reward.all
+    end
 
-    def edit; end
+    def new
+      @reward = Reward.new
+    end
 
-    def update; end
+    def create
+      @reward = Reward.new(reward_params)
 
-    def destroy; end
+      if @reward.save
+        redirect_to admins_rewards_path, notice: 'reward was successfully created.'
+      else
+        render :new
+      end
+    end
+
+    def edit
+      reward_find
+    end
+
+    def update
+      reward_find
+      if @reward.update(reward_params)
+        redirect_to admins_rewards_path, notice: 'Reward succesfully updated'
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      reward_find
+      @reward.destroy
+      redirect_to admins_rewards_path, notice: 'Reward successfully destroyed.'
+    end
 
     private
 
@@ -17,7 +46,7 @@ module Admins
     end
 
     def reward_params
-      params.require(:reward).permit(:title, :content, :price)
+      params.require(:reward).permit(:title, :description, :price)
     end
   end
 end
