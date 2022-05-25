@@ -1,9 +1,9 @@
 class Reward < ApplicationRecord
-  validates reward_must_be_positive_number
+  validates :price, numericality: { greater_than: 0 }
 
-  def reward_must_be_positive_number
-    return unless reward.positive?
+  def price_must_be_positive_number
+    return unless price.positive?
 
-    errors.add(:reward_must_be_positive_number, "Reward must be greater than 0")
+    errors.add(:price_must_be_positive_number, 'Price must be greater than 0')
   end
 end
