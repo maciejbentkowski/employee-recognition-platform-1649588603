@@ -14,7 +14,7 @@ module Admins
       @reward = Reward.new(reward_params)
 
       if @reward.save
-        redirect_to admins_rewards_path, notice: 'reward was successfully created.'
+        redirect_to admins_rewards_path, notice: 'Reward was successfully created.'
       else
         render :new
       end
@@ -27,7 +27,7 @@ module Admins
     def update
       reward_find
       if @reward.update(reward_params)
-        redirect_to admins_rewards_path, notice: 'Reward succesfully updated'
+        redirect_to admins_rewards_path, notice: 'Reward was succesfully updated.'
       else
         render :edit
       end
