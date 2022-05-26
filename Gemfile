@@ -24,6 +24,7 @@ gem 'net-smtp'
 gem 'normalize-rails'
 
 group :development, :test do
+  gem 'faker', '~> 2.21'
   # Debugging tool
   gem 'pry-rails'
   gem 'rubocop', '1.25.1'
