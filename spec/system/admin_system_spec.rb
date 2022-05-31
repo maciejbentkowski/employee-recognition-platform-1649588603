@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Admin', type: :system do
   before do
     driven_by(:rack_test)
+
+    visit '/admins'
+    fill_in 'Email', with: admin.email
+    fill_in 'Password', with: admin.password
+    click_button 'commit'
   end
 
   let(:admin) { create(:admin) }
@@ -12,20 +17,16 @@ RSpec.describe 'Admin', type: :system do
   let!(:kudo2) { create(:kudo, giver_id: employee2.id, receiver_id: employee1.id) }
 
   it 'signs admin in' do
-    admin_sign_in_and_expect_succesfully
+    expect(page).to have_content 'Signed in successfully'
   end
 
   it 'lists employees' do
-    admin_sign_in_and_expect_succesfully
-
     visit '/admins/employees'
     expect(page).to have_content employee1.email
     expect(page).to have_content employee2.email
   end
 
   it 'lists all kudos' do
-    admin_sign_in_and_expect_succesfully
-
     visit '/admins/kudos'
     expect(page).to have_content kudo1.title
     expect(page).to have_content kudo1.content
@@ -36,8 +37,6 @@ RSpec.describe 'Admin', type: :system do
   end
 
   it 'deleting Kudos' do
-    admin_sign_in_and_expect_succesfully
-
     visit '/admins/kudos'
     expect(page).to have_content kudo1.title
     expect(page).to have_content kudo1.content
@@ -47,8 +46,6 @@ RSpec.describe 'Admin', type: :system do
   end
 
   it 'allow to update employee' do
-    admin_sign_in_and_expect_succesfully
-
     visit '/admins/employees'
     click_on 'Edit', match: :first
     expect(page).to have_content 'Editing Employee'
@@ -60,17 +57,7 @@ RSpec.describe 'Admin', type: :system do
   end
 
   it 'allow to destroy employee' do
-    admin_sign_in_and_expect_succesfully
-
     visit '/admins/employees'
     expect { (click_on 'Destroy', match: :first) }.to change(Employee, :count).by(-1)
-  end
-
-  def admin_sign_in_and_expect_succesfully
-    visit '/admins'
-    fill_in 'Email', with: admin.email
-    fill_in 'Password', with: admin.password
-    click_button 'commit'
-    expect(page).to have_content 'Signed in successfully'
   end
 end

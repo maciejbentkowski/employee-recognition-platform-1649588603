@@ -10,7 +10,7 @@ end
 
 10.times do |r|
   price = Random.new
-  reward = Reward.create!(title: Faker::Lorem.word, description: Faker::Quotes::Shakespeare.hamlet_quote, price: price.rand(1000))
+  reward = Reward.create!(title: Faker::Lorem.word, description: Faker::Quotes::Shakespeare.hamlet_quote, price: price.rand(1..1000))
   puts reward.title, reward.description, reward.price
 end
 5.times do |e|
@@ -23,4 +23,3 @@ end
     kudo = Kudo.create!(title: "sample title number #{e}", content: "sample content number #{e}", giver: giver, receiver: receiver, company_value: CompanyValue.all.sample)
     puts kudo.title
 end
-

@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  get '/profiles/:id', to: 'profile#show', as: 'profile'
+  get '/profiles/:id', to: 'profiles#show', as: 'profile'
   get '/home', to: 'home#index', as: 'home'
   scope :admins do
   get '/pages', to: 'admins/pages#dashboard', as:'dashboard'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :rewards, only: [:index, :create, :new, :edit, :update, :destroy]
   end
 
-
+  resources :rewards, only: [:index, :show]
   resources :kudos
 
   root to: "kudos#index"
