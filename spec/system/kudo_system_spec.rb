@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Kudos', type: :system do
   before do
     driven_by(:rack_test)
+
+    visit '/employees/sign_in'
+    fill_in 'Email', with: employee1.email
+    fill_in 'Password', with: employee1.password
+    click_button 'commit'
   end
 
   let(:employee1) { create(:employee) }
@@ -12,7 +17,6 @@ RSpec.describe 'Kudos', type: :system do
   let!(:company_value2) { create(:company_value, title: 'second company value') }
 
   it 'Creating kudo' do
-    employee_sign_in_and_expect_succesfully
     kudo = build(:kudo)
     visit '/kudos/new'
     fill_in 'Title', with: kudo.title
@@ -23,7 +27,6 @@ RSpec.describe 'Kudos', type: :system do
   end
 
   it 'Editing kudo' do
-    employee_sign_in_and_expect_succesfully
     visit "/kudos/#{kudo1.id}/edit"
     fill_in 'Title', with: 'Changed title'
     fill_in 'Content', with: 'Changed content'
@@ -37,7 +40,6 @@ RSpec.describe 'Kudos', type: :system do
   end
 
   it 'Deleting kudo' do
-    employee_sign_in_and_expect_succesfully
     visit "/kudos/#{kudo1.id}"
     expect { click_link 'Destroy' }.to change(Kudo, :count).by(-1)
     expect(page).to have_content('Kudo was successfully destroyed.')
@@ -52,7 +54,6 @@ RSpec.describe 'Kudos', type: :system do
       giver_id: employee1.id,
       receiver_id: employee3.id
     )
-    employee_sign_in_and_expect_succesfully
     kudo = build(:kudo)
     visit '/kudos/new'
     fill_in 'Title', with: kudo.title
@@ -60,13 +61,5 @@ RSpec.describe 'Kudos', type: :system do
     select employee3.email, from: 'Receiver'
     click_button 'commit'
     expect(page).to have_content "You can't add more Kudos"
-  end
-
-  def employee_sign_in_and_expect_succesfully
-    visit '/employees/sign_in'
-    fill_in 'Email', with: employee1.email
-    fill_in 'Password', with: employee1.password
-    click_button 'commit'
-    expect(page).to have_content 'Signed in successfully.'
   end
 end
