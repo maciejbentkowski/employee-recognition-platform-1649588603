@@ -8,9 +8,10 @@
     <nav>|<%=link_to "My kudos",profile_path(current_employee.id), class: "nav-link" %>|</nav>
     <% elsif admin_signed_in?%>
     <nav>Hello <%=current_admin.email%></nav>
-    <nav>|<%=link_to "Company Values", admins_company_values_path, class: "nav-link"%>|</nav>
-    <nav>|<%=link_to "Employees", employees_path, class: "nav-link" %>|</nav>
     <nav>|<%=link_to "Kudos", admins_kudos_path, class: "nav-link" %>|</nav>
+    <nav>|<%=link_to "Employees", employees_path, class: "nav-link" %>|</nav>
+    <nav>|<%=link_to "Company Values", admins_company_values_path, class: "nav-link"%>|</nav>
+    <nav>|<%=link_to "Rewards",admins_rewards_path, class: "nav-link"%>|</nav>
     <nav>|<%=link_to "Dashboard",dashboard_path, class: "nav-link"%>|</nav>
     <nav>|<%=link_to "Sign Out",destroy_admin_session_path, :method => :delete, class: "nav-link" %>|</nav>
     <% else %>
