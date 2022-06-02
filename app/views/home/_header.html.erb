@@ -4,8 +4,9 @@
     <% if employee_signed_in?%>
     <nav>Available kudos <%=current_employee.number_of_available_kudos%></nav>
     <nav>Hello <%=current_employee.email%></nav>>
-    <nav>|<%=link_to "Sign Out",destroy_employee_session_path, :method => :delete, class: "nav-link" %>|</nav>
     <nav>|<%=link_to "My kudos",profile_path(current_employee.id), class: "nav-link" %>|</nav>
+    <nav>|<%=link_to "Rewards",rewards_path, class: "nav-link" %>|</nav>
+    <nav>|<%=link_to "Sign Out",destroy_employee_session_path, :method => :delete, class: "nav-link" %>|</nav>
     <% elsif admin_signed_in?%>
     <nav>Hello <%=current_admin.email%></nav>
     <nav>|<%=link_to "Kudos", admins_kudos_path, class: "nav-link" %>|</nav>

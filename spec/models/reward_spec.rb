@@ -2,28 +2,35 @@ require 'rails_helper'
 
 RSpec.describe Reward, type: :model do
   let!(:reward) { build(:reward) }
+  let!(:invalid_reward) { build(:invalid_reward) }
 
-  it 'is not valid without a title' do
-    expect(reward).to be_valid
-    reward.title = ''
-    expect(reward).not_to be_valid
+  context 'when validates title' do
+    it 'has a title' do
+      expect(reward).to be_valid
+    end
+
+    it 'has not a title' do
+      expect(invalid_reward).not_to be_valid
+    end
   end
 
-  it 'is not valid without a description' do
-    expect(reward).to be_valid
-    reward.description = ''
-    expect(reward).not_to be_valid
+  context 'when validates description' do
+    it 'has a description' do
+      expect(reward).to be_valid
+    end
+
+    it 'has not a description' do
+      expect(invalid_reward).not_to be_valid
+    end
   end
 
-  it 'is not valid without a price' do
-    expect(reward).to be_valid
-    reward.price = ''
-    expect(reward).not_to be_valid
-  end
+  context 'when validates price' do
+    it 'has a price' do
+      expect(reward).to be_valid
+    end
 
-  it 'price is greater than or equal to 1' do
-    expect(reward).to be_valid
-    reward.price = 0
-    expect(reward).not_to be_valid
+    it 'price is equal 0' do
+      expect(invalid_reward).not_to be_valid
+    end
   end
 end
