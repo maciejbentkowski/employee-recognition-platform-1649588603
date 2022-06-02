@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
 
-  get '/profiles/:id', to: 'profiles#show', as: 'profile'
+  get '/profiles/:id', to: 'employees#show', as: 'profile'
   get '/home', to: 'home#index', as: 'home'
   scope :admins do
   get '/pages', to: 'admins/pages#dashboard', as:'dashboard'

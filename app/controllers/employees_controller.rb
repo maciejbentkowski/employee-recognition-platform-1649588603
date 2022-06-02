@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class EmployeesController < ApplicationController
   before_action :require_login
   def show
     @employee = Employee.find(params[:id])
