@@ -1,5 +1,4 @@
 class RewardsController < ApplicationController
-  before_action :require_login
   def index
     @rewards = Reward.all
   end
