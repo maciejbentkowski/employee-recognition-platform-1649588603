@@ -1,7 +1,5 @@
 module Admins
   class KudosController < ApplicationController
-    before_action :require_admin_login
-
     def index
       @kudos = Kudo.all
     end

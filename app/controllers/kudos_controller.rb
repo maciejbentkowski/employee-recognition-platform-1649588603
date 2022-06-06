@@ -1,6 +1,4 @@
 class KudosController < ApplicationController
-  before_action :require_login
-
   def index
     @kudos = Kudo.all
   end

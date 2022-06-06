@@ -1,7 +1,5 @@
 module Admins
   class RewardsController < ApplicationController
-    before_action :require_admin_login
-
     def index
       @rewards = Reward.all
     end

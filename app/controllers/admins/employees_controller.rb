@@ -1,6 +1,5 @@
 module Admins
   class EmployeesController < ApplicationController
-    before_action :require_admin_login
     def index
       @employees = Employee.all
     end

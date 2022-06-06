@@ -2,7 +2,8 @@
     <div class= "logo"><%=link_to "Employee App",root_path, class: "nav-logo" %></div>
     <div class= "menu">
     <% if employee_signed_in?%>
-    <nav>Available kudos <%=current_employee.number_of_available_kudos%></nav>
+    <nav>Points: <%=current_employee.points%></nav>
+    <nav>Available kudos: <%=current_employee.number_of_available_kudos%></nav>
     <nav>Hello <%=current_employee.email%></nav>>
     <nav>|<%=link_to "My kudos",profile_path(current_employee.id), class: "nav-link" %>|</nav>
     <nav>|<%=link_to "Rewards",rewards_path, class: "nav-link" %>|</nav>
