@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   devise_for :employees
   authenticate :employee do
-      root to: "kudos#index"
-  get '/profiles/:id', to: 'employees#show', as: 'profile'
-  resources :rewards, only: [:index, :show]
-  resources :kudos
+    root to: "kudos#index"
+    get '/profiles/:id', to: 'employees#show', as: 'profile'
+    resources :rewards, only: [:index, :show]
+    resources :kudos
+    resources :orders, only: [:new, :create]
   end
 
   devise_for :admins, :skip => [:registrations], :path_names => { :sign_in => ''}
