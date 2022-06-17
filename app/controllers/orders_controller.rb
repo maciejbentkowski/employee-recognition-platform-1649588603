@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def employee
-    @employee = Employee.where(id: params[:employee_id]).take
+    @employee = Employee.find_by(id: params[:employee_id])
   end
 
   def reward
