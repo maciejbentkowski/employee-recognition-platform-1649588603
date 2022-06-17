@@ -10,7 +10,7 @@ end
 
 10.times do |r|
   price = Random.new
-  reward = Reward.create!(title: Faker::Lorem.word, description: Faker::Quotes::Shakespeare.hamlet_quote, price: price.rand(1..10))
+  reward = Reward.create!(title: "price title number #{r}", description: "Price description number #{r}", price: price.rand(1..10))
   puts reward.title, reward.description, reward.price
 end
 5.times do |e|
