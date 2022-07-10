@@ -32,9 +32,22 @@
 
 <h2>My rewards</h2>
 
-<% @orders.each do |order| %>
-  <td><%= order.employee.email %></td></br>
-  <td><%= order.reward.title %></td>
-  <td><%= order.points %></td></br>
-  <td><%= order.created_at %></td></br>
-<%end %>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Purchase time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.reward.title %></td>
+        <td><%= order.points %></td></br>
+        <td><%= order.created_at %></td></br>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

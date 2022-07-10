@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def reward
-    Reward.find_by(params[:reward_id])
+    Reward.find_by(id: order_params[:reward_id])
   end
 
   def employee
