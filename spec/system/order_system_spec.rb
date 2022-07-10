@@ -15,7 +15,7 @@ RSpec.describe 'Order', type: :system do
 
     let!(:employee) { create(:employee_with_20_points) }
     let!(:reward) { create(:reward) }
-    let!(:reward_that_cost_thirty) { create(:reward_with_price_thirty)}
+    let!(:reward_that_cost_thirty) { create(:reward_with_price_thirty) }
 
     it 'Remove points after buy a reward' do
       expect(employee.points).to eq(20.0)

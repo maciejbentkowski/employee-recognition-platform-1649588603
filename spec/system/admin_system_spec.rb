@@ -70,7 +70,7 @@ RSpec.describe 'Admin', type: :system do
   end
 
   describe 'Admin Orders' do
-    let!(:employee){ create(:employee_with_20_points)}
+    let!(:employee) { create(:employee_with_20_points) }
     let!(:order) { create(:order_cost_five, employee: employee) }
 
     it 'Changing the reward price does not affect to order' do
