@@ -42,6 +42,29 @@ RSpec.describe 'Employee', type: :system do
     end
   end
 
+  describe 'Employee orders' do
+    before do
+      visit '/employees/sign_in'
+      fill_in 'Email', with: employee.email
+      fill_in 'Password', with: employee.password
+      click_button 'commit'
+    end
+
+    let!(:employee) { create(:employee_with_20_points) }
+    let!(:reward) { create(:reward) }
+
+    it 'Can see rewards employee bought' do
+      visit '/orders/new'
+      select employee.email, from: 'Employee'
+      select reward.title, from: 'Reward'
+      click_button 'commit'
+      visit "/profiles/#{employee.id}"
+      expect(page).to have_content reward.title
+      expect(page).to have_content reward.created_at
+      expect(page).to have_content reward.price
+    end
+  end
+
   it 'signs employee up' do
     employee = build(:employee)
     visit '/employees/sign_up'
