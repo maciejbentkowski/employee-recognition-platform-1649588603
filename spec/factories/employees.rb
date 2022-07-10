@@ -3,9 +3,9 @@ FactoryBot.define do
     sequence(:email) { |i| "employee#{i}@sample.com" }
     password { 'password' }
 
-    trait :with_points do
+    trait :with_20_points do
       points { 20 }
     end
-    factory :employee_with_20_points, traits: %i[with_points]
+    factory :employee_with_20_points, traits: %i[with_20_points]
   end
 end
