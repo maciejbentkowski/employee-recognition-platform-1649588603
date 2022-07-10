@@ -17,10 +17,3 @@
     <% end %>
   </tbody>
 </table>
-
-<h2>Your rewards</h2>
-
-<% @orders.each do |order| %>
-  <td><%= order.reward.title %></td>
-  <td><%= order.employee.email %></td></br>
-<%end %>
