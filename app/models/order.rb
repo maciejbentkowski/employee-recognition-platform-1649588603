@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
-  belongs_to :employee, dependent: :destroy
-  belongs_to :reward, dependent: :destroy
+  belongs_to :employee
+  belongs_to :reward
 
   after_save :remove_points_after_place_an_order
 

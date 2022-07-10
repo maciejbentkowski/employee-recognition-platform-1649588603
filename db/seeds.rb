@@ -1,5 +1,3 @@
-require 'faker'
-
 admin = Admin.create!(email:"admin1@sample.com", password: "password1")
 puts "Admin created! #{admin.email} #{admin.password}"
 
