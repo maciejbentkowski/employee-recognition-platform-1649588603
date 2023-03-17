@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.points = reward.price
+    @order.purchuase_price = reward.price
     if @order.save
       redirect_to rewards_path, notice: 'You bought reward succesfully'
     else
