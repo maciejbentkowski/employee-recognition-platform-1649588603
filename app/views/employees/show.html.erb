@@ -1,3 +1,5 @@
+<h2>My kudos</h2>
+
 <table>
   <thead>
     <tr>
@@ -21,6 +23,30 @@
         <td><%= link_to 'Show', kudo %></td>
         <td><%= link_to 'Edit', edit_kudo_path(kudo) %></td>
         <td><%= link_to 'Delete', kudo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+
+  </tbody>
+</table>
+
+<h2>My rewards</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Purchase time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.reward.title %></td>
+        <td><%= order.points %></td></br>
+        <td><%= order.created_at %></td></br>
       </tr>
     <% end %>
   </tbody>

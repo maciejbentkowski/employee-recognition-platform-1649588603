@@ -16,6 +16,11 @@ FactoryBot.define do
       price { 0 }
     end
 
+    trait :price_thirty do
+      price { 30 }
+    end
+
     factory :invalid_reward, traits: %i[no_title no_description no_price]
+    factory :reward_with_price_thirty, traits: %i[price_thirty]
   end
 end
