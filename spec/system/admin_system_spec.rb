@@ -73,7 +73,7 @@ RSpec.describe 'Admin', type: :system do
     let!(:employee) { create(:employee_with_20_points) }
     let!(:order) { create(:order_cost_five, employee: employee) }
 
-    it 'Changing the reward price does not affect to order' do
+    it 'Changing the reward price does not affect order' do
       expect(order.points).to eq(5.0)
       expect(order.employee_id).to be employee.id
 
